@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  form(action="/training", method="post")
+    input(type="text", name="name")
+    br
+    input(type="number", name="velocity")
+    br
+    input(type="text", name="unit")
+    br
+    input(type="submit", value="登録")
+
