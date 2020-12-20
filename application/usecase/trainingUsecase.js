@@ -1,5 +1,6 @@
-const trainingService = require('../service/trainingService');
 const uuid = require('uuid');
+const trainingService = require('../service/trainingService');
+const Training = require('../../domain/training');
 
 class TrainingUsecase {
     constructor() {
@@ -11,8 +12,8 @@ class TrainingUsecase {
     }
 
     save(formData) {
-        const id = uuid.v4();
-        trainingService.save(id, formData);
+        const training = new Training(uuid.v4(), formData.name, formData.velocity, formData.unit);
+        trainingService.save(training);
     }
 }
 
