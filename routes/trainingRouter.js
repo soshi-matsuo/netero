@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const trainingService = require('../application/trainingService');
+const trainingUsecase = require('../application/usecase/trainingUsecase');
 
 router.post('/', (req, res, next) => {
-    trainingService.save(req.body);
+    trainingUsecase.save(req.body);
     res.redirect('/');
 });
 

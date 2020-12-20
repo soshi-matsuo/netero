@@ -1,4 +1,4 @@
-const TrainingModel = require('./models/training');
+const TrainingModel = require('./models/trainingSchema');
 
 class TrainingDataSource {
     constructor() {
@@ -18,6 +18,10 @@ class TrainingDataSource {
             .catch(err => {
                 console.error(err);
             });
+    }
+
+    async getAll() {
+        return await TrainingModel.find({});
     }
 }
 

@@ -1,7 +1,7 @@
 const mongoose = require('../database');
 
 const trainingSchema = new mongoose.Schema({
-    id: Number,
+    id: String,
     name: String,
     velocity: Number,
     unit: String
