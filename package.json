@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run-dev": "node_modules/nodemon/bin/nodemon.js app.js"
+    "run-dev": "node_modules/nodemon/bin/nodemon.js app.js | ./node_modules/.bin/bunyan"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bunyan": "^1.8.14",
     "express": "^4.17.1",
     "mongoose": "^5.11.8",
     "pug": "^3.0.0",

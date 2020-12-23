@@ -1,4 +1,5 @@
 const TrainingModel = require('./models/trainingSchema');
+const logger = require('../logger');
 
 class TrainingDataSource {
     constructor() {
@@ -13,10 +14,10 @@ class TrainingDataSource {
         });
         msg.save()
             .then(doc => {
-                console.log(doc);
+                logger.info('saved training: %j', doc);
             })
             .catch(err => {
-                console.error(err);
+                logger.error('error while saving training: %j', err);
             });
     }
 
