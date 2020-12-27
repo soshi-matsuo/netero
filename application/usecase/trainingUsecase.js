@@ -3,10 +3,6 @@ const trainingService = require('../service/trainingService');
 const Training = require('../../domain/training');
 
 class TrainingUsecase {
-    constructor() {
-
-    }
-
     async getAll() {
         return await trainingService.getAll();
     }
