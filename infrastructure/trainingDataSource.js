@@ -2,9 +2,6 @@ const TrainingModel = require('./models/trainingSchema');
 const logger = require('../logger');
 
 class TrainingDataSource {
-    constructor() {
-    }
-
     save(training) {
         const msg = new TrainingModel({
             id: training.id(),

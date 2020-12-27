@@ -1,13 +1,8 @@
 const dataSource = require('../../infrastructure/trainingDataSource');
-const trainingDataSource = require('../../infrastructure/trainingDataSource');
 
 class TrainingService {
-    constructor() {
-
-    }
-
     async getAll() {
-        return await trainingDataSource.getAll();
+        return await dataSource.getAll();
     }
 
     save(training) {
