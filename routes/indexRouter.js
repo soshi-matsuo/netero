@@ -2,12 +2,19 @@ const express = require('express');
 const router = express.Router();
 
 const logger = require('../logger');
-const trainingUsecase = require('../application/usecase/trainingUsecase');
+const indexUsecase = require('../application/usecase/IndexUsecase');
+
+const toRenderableData = (indexData) => {
+    const [trainings, achievements] = indexData;
+    const achievedSet = new Set();
+    achievements.forEach(achievement => achievedSet.add(achievement.trainingId));
+    return {title: 'NETERO', trainings, achievedSet};
+}
 
 router.get('/', async (req, res) => {
     logger.info('request GET to /');
-    const trainings = await trainingUsecase.getAll();
-    res.render('index', {title: 'NETERO', trainings});
+    const indexData = await indexUsecase.getIndexData();
+    res.render('index', toRenderableData(indexData));
 });
 
 module.exports = router;
