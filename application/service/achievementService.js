@@ -8,6 +8,10 @@ class AchievementService {
     async findOne(achievement) {
         return await dataSource.findOne(achievement);
     }
+
+    async find(option) {
+        return await dataSource.find(option);
+    }
 }
 
 module.exports = new AchievementService();

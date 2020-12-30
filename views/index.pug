@@ -6,8 +6,11 @@ block content
     ul
         each training in trainings
             li #{training.name} #{training.velocity} #{training.unit}
-                form(action=`/achievement/${training.id}`, method="post")
-                    input(type="submit", value="達成")
+                if achievedSet.has(training.id)
+                    span ✅
+                else
+                    form(action=`/achievement/${training.id}`, method="post")
+                        input(type="submit", value="達成")
     form(action="/training", method="post")
         input(type="text", name="name")
         br

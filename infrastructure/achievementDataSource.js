@@ -22,6 +22,10 @@ class AchievementDataSource {
             date: achievement.date()
         });
     }
+
+    async find(option) {
+        return await AchievementModel.find(option);
+    }
 }
 
 module.exports = new AchievementDataSource();
