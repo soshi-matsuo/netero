@@ -8,4 +8,12 @@ router.post('/', (req, res) => {
     res.redirect('/');
 });
 
+router.get('/:id', (req, res) => {
+    const renderableData = { 
+        training: { id: req.params.id, name: 'push up', velocity: '10', unit: 'times' },
+        aggregate: { sum: 80 }
+    };
+    res.render('detail', renderableData);
+});
+
 module.exports = router;

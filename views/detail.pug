@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h1 鍛錬#{training.id}の詳細
+    div
+        p #{training.name} #{training.velocity} #{training.unit}
+    div
+        p これまでの達成
+        p #{training.name} #{aggregation.sum} #{training.unit}
+    div
+        p 達成カレンダー
