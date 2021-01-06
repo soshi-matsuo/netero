@@ -1,11 +1,15 @@
-class AchievementAggregate {
-    #trainingId;
+class AchievementsAggregate {
+    #training;
     #achievements;
 
-    constructor(trainingId, achievements) {
-        this.#trainingId = trainingId;
+    constructor(training, achievements) {
+        this.#training = training;
         this.#achievements = achievements;
+    }
+
+    aggregateVelocity() {
+        return this.#training.velocity() * this.#achievements.length;
     }
 }
 
-module.exports = AchievementAggregate;
+module.exports = AchievementsAggregate;

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const logger = require('../logger');
-const indexUsecase = require('../application/usecase/IndexUsecase');
+const indexPageUsecase = require('../application/usecase/indexPageUsecase');
 
 const toRenderableData = (indexData) => {
     const [trainings, achievements] = indexData;
@@ -13,7 +13,7 @@ const toRenderableData = (indexData) => {
 
 router.get('/', async (req, res) => {
     logger.info('request GET to /');
-    const indexData = await indexUsecase.getIndexData();
+    const indexData = await indexPageUsecase.createIndexData();
     res.render('index', toRenderableData(indexData));
 });
 

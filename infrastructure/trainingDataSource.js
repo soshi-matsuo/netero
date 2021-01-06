@@ -21,6 +21,10 @@ class TrainingDataSource {
     async getAll() {
         return await TrainingModel.find({});
     }
+
+    async findById(trainingId) {
+        return await TrainingModel.findOne({ id: trainingId });
+    }
 }
 
 module.exports = new TrainingDataSource();

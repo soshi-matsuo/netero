@@ -8,6 +8,10 @@ class TrainingService {
     save(training) {
         dataSource.save(training);
     }
+
+    async findById(trainingId) {
+        return await dataSource.findById(trainingId);
+    }
 }
 
 module.exports = new TrainingService();

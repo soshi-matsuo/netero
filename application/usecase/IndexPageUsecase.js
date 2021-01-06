@@ -7,8 +7,8 @@ dayjs.extend(timezone);
 const trainingService = require("../service/trainingService");
 const achievementService = require("../service/achievementService");
 
-class IndexUsecase {
-    getIndexData() {
+class IndexPageUsecase {
+    createIndexData() {
         return Promise.all([this.getAllTrainings(), this.findTodayAchievements()]);
     }
 
@@ -24,4 +24,4 @@ class IndexUsecase {
     }
 }
 
-module.exports = new IndexUsecase();
+module.exports = new IndexPageUsecase();
