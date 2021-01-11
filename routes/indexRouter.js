@@ -7,7 +7,7 @@ const indexPageUsecase = require('../application/usecase/indexPageUsecase');
 const toRenderableData = (indexData) => {
     const [trainings, achievements] = indexData;
     const achievedSet = new Set();
-    achievements.forEach(achievement => achievedSet.add(achievement.trainingId));
+    achievements.forEach(achievement => achievedSet.add(achievement.trainingId()));
     return {title: 'NETERO', trainings, achievedSet};
 }
 

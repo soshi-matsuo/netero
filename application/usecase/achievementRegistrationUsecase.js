@@ -10,11 +10,9 @@ const Achievement = require('../../domain/achievement');
 class AchievementRegistrationUsecase {
     async save(trainingId) {
         const date = dayjs().tz('Asia/Tokyo').format('YYYY-MM-DD');
-        const achievement = new Achievement(trainingId, date);
-        const foundDoc = await achievementService.findOne(achievement);
-        if (foundDoc) return false;
+        if ((await achievementService.find({trainingId, date})).length > 0) return false;
 
-        achievementService.save(achievement);
+        achievementService.save(new Achievement(trainingId, date));
         return true;
     }
 }
