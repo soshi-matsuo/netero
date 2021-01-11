@@ -5,11 +5,10 @@ const achievementService = require('../service/achievementService');
 
 class DetailPageUsecase {
     async createTrainingDetailData(trainingId) {
-        const trainingDocPromise = trainingService.findById(trainingId);
+        const trainingPromise = trainingService.findById(trainingId);
         const achievementsPromise = achievementService.find({ trainingId });
-        const [trainingDoc, achievements] = await Promise.all([trainingDocPromise, achievementsPromise]);
+        const [training, achievements] = await Promise.all([trainingPromise, achievementsPromise]);
 
-        const training = new Training(trainingDoc.id, trainingDoc.name, trainingDoc.velocity, trainingDoc.unit);
         const achievementsAggregate = new AchievementsAggregate(training, achievements);
         return { training, aggregateVelocity: achievementsAggregate.aggregateVelocity()};
     }

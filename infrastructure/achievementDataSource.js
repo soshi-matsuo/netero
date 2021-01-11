@@ -1,5 +1,6 @@
 const AchievementModel = require('./models/achievementSchema');
 const logger = require('../logger');
+const Achievement = require('../domain/achievement');
 
 class AchievementDataSource {
     save(achievement) {
@@ -17,14 +18,16 @@ class AchievementDataSource {
     }
 
     async findOne(achievement) {
-        return await AchievementModel.findOne({
+        const achievementDoc = await AchievementModel.findOne({
             trainingId: achievement.trainingId(),
             date: achievement.date()
         });
+        return new Achievement(achievementDoc.id, achievementDoc.date)
     }
 
     async find(option) {
-        return await AchievementModel.find(option);
+        const achievements = await AchievementModel.find(option);
+        return achievements.map(achievement => new Achievement(achievement.trainingId, achievement.date))
     }
 }
 

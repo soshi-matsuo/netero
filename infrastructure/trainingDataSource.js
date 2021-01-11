@@ -1,5 +1,6 @@
 const TrainingModel = require('./models/trainingSchema');
 const logger = require('../logger');
+const Training = require('../domain/training');
 
 class TrainingDataSource {
     save(training) {
@@ -19,11 +20,19 @@ class TrainingDataSource {
     }
 
     async getAll() {
-        return await TrainingModel.find({});
+        const trainings = await TrainingModel.find({});
+        return trainings.map(training => new Training(training.id, training.name, training.velocity, training.unit));
     }
 
     async findById(trainingId) {
-        return await TrainingModel.findOne({ id: trainingId });
+        const training = await TrainingModel.findOne({ id: trainingId });
+
+        return new Training(
+            training.id,
+            training.name,
+            training.velocity,
+            training.unit
+        );
     }
 }
 

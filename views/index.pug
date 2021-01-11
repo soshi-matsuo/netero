@@ -5,11 +5,11 @@ block content
     p Welcome to #{title}
     ul
         each training in trainings
-            li #{training.name} #{training.velocity} #{training.unit}
-                if achievedSet.has(training.id)
+            li #{training.name()} #{training.velocity()} #{training.unit()}
+                if achievedSet.has(training.id())
                     span ✅
                 else
-                    form(action=`/achievement/${training.id}`, method="post")
+                    form(action=`/achievement/${training.id()}`, method="post")
                         input(type="submit", value="達成")
     form(action="/training", method="post")
         input(type="text", name="name")
