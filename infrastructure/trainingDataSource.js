@@ -27,6 +27,8 @@ class TrainingDataSource {
     async findById(trainingId) {
         const training = await TrainingModel.findOne({ id: trainingId });
 
+        console.log(training);
+
         return new Training(
             training.id,
             training.name,

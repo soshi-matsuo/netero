@@ -1,4 +1,3 @@
-const Training = require('../../domain/training');
 const AchievementsAggregate = require('../../domain/achievementsAggregate');
 const trainingService = require('../service/trainingService');
 const achievementService = require('../service/achievementService');
@@ -10,7 +9,7 @@ class DetailPageUsecase {
         const [training, achievements] = await Promise.all([trainingPromise, achievementsPromise]);
 
         const achievementsAggregate = new AchievementsAggregate(training, achievements);
-        return { training, aggregateVelocity: achievementsAggregate.sumUpVelocities()};
+        return { training, totalVelocity: achievementsAggregate.sumUpVelocities(), janAchievements: achievementsAggregate.extractAchievementsByMonth('2021', '01')};
     }
 }
 
