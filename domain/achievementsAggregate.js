@@ -7,8 +7,12 @@ class AchievementsAggregate {
         this.#achievements = achievements;
     }
 
-    aggregateVelocity() {
+    sumUpVelocities() {
         return this.#training.velocity() * this.#achievements.length;
+    }
+
+    extractAchievementsByMonth(year, month) {
+        return this.#achievements.filter(achievement => achievement.date().indexOf(`${year}-${month}`) !== -1);
     }
 }
 

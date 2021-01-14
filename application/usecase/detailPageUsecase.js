@@ -10,7 +10,7 @@ class DetailPageUsecase {
         const [training, achievements] = await Promise.all([trainingPromise, achievementsPromise]);
 
         const achievementsAggregate = new AchievementsAggregate(training, achievements);
-        return { training, aggregateVelocity: achievementsAggregate.aggregateVelocity()};
+        return { training, aggregateVelocity: achievementsAggregate.sumUpVelocities()};
     }
 }
 
