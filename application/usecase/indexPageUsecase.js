@@ -1,9 +1,4 @@
-const dayjs = require('dayjs');
-const utc = require('dayjs/plugin/utc');
-const timezone = require('dayjs/plugin/timezone');
-dayjs.extend(utc);
-dayjs.extend(timezone);
-
+const date = require('../../date');
 const trainingService = require("../service/trainingService");
 const achievementService = require("../service/achievementService");
 
@@ -14,7 +9,7 @@ class IndexPageUsecase {
 
     async findTodayAchievements() {
         const option = {
-            date: dayjs().tz('Asia/Tokyo').format('YYYY-MM-DD')
+            date: date().tz('Asia/Tokyo').format('YYYY-MM-DD')
         };
         return await achievementService.find(option);
     }

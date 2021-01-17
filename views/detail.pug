@@ -1,6 +1,10 @@
 extends layout
 
 block content
+    script(src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.js")
+    script
+        //- TODO: rendering calendar properly
+        include calendar.js
     h1 鍛錬#{training.id()}の詳細
     div
         p #{training.name()} #{training.velocity()} #{training.unit()}
@@ -9,4 +13,7 @@ block content
         p #{training.name()} #{totalVelocity} #{training.unit()}
     div
         p 達成カレンダー
-        p #{janAchievements[0].trainingId()} (#{janAchievements[0].date()})
+        ul
+            //- each achievement in achievements
+                //- li #{achievements[0].trainingId()} (#{achievements[0].date()})
+        #calendar
