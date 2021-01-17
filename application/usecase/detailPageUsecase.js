@@ -3,15 +3,13 @@ const trainingService = require('../service/trainingService');
 const achievementService = require('../service/achievementService');
 
 class DetailPageUsecase {
-    // TODO: add year and month arguments
-    async createTrainingDetailData(trainingId) {
+    async createTrainingDetailData(trainingId, year, month) {
         const trainingPromise = trainingService.findById(trainingId);
         const achievementsPromise = achievementService.find({ trainingId });
         const [training, achievements] = await Promise.all([trainingPromise, achievementsPromise]);
 
         const achievementsAggregate = new AchievementsAggregate(training, achievements);
-        // TODO: change janAchievements:.. with relevant year and month
-        return { training, totalVelocity: achievementsAggregate.sumUpVelocities(), janAchievements: achievementsAggregate.extractAchievementsByMonth('2021', '01')};
+        return { training, totalVelocity: achievementsAggregate.sumUpVelocities(), achievements: achievementsAggregate.extractAchievementsByMonth(year, month)};
     }
 }
 
