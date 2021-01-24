@@ -2,9 +2,22 @@ extends layout
 
 block content
     script(src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.js")
-    script
-        //- TODO: rendering calendar properly
-        include calendar.js
+    script.
+        const achievements = !{JSON.stringify(achievements)}
+        document.addEventListener('DOMContentLoaded', () => {
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: achievements.map(aDate => {
+                    return {
+                        title: 'Done!',
+                        start: aDate,
+                        display: 'background'
+                    };
+                })
+            });
+            calendar.render();
+        });
     h1 鍛錬#{training.id()}の詳細
     div
         p #{training.name()} #{training.velocity()} #{training.unit()}
@@ -13,7 +26,4 @@ block content
         p #{training.name()} #{totalVelocity} #{training.unit()}
     div
         p 達成カレンダー
-        ul
-            //- each achievement in achievements
-                //- li #{achievements[0].trainingId()} (#{achievements[0].date()})
         #calendar

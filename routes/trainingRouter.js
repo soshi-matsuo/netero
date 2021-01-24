@@ -19,6 +19,7 @@ router.get('/:trainingId', async (req, res) => {
         [year, month] = defaultDate.split('-');
     }
     const detailData = await detailPageUsecase.createTrainingDetailData(req.params.trainingId, year, month);
+    detailData.achievements = detailData.achievements.map(a => a.date());
     logger.info('/training/:trainingId returns: %j', detailData);
     res.render('detail', detailData);
 });
