@@ -4,6 +4,8 @@ block content
     script(src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.js")
     script.
         const achievements = !{JSON.stringify(achievements)}
+        const year = !{JSON.stringify(year)}
+        const month = !{JSON.stringify(month)}
         document.addEventListener('DOMContentLoaded', () => {
             const calendarEl = document.getElementById('calendar');
             const calendar = new FullCalendar.Calendar(calendarEl, {
@@ -14,7 +16,8 @@ block content
                         start: aDate,
                         display: 'background'
                     };
-                })
+                }),
+                initialDate: `${year}-${month}-01`
             });
             calendar.render();
         });
@@ -26,4 +29,7 @@ block content
         p #{training.name()} #{totalVelocity} #{training.unit()}
     div
         p 達成カレンダー
+        a(href=`/training/${training.id()}?year=${next.nextYear}&month=${next.nextMonth}`) next month
+        br
+        a(href=`/training/${training.id()}?year=${previous.previousYear}&month=${previous.previousMonth}`) previous month
         #calendar
