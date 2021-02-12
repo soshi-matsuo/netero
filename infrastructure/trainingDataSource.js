@@ -8,7 +8,8 @@ class TrainingDataSource {
             id: training.id(),
             name: training.name(),
             velocity: training.velocity(),
-            unit: training.unit()
+            unit: training.unit(),
+            userId: training.userId()
         });
         msg.save()
             .then(doc => {
@@ -19,9 +20,9 @@ class TrainingDataSource {
             });
     }
 
-    async getAll() {
-        const trainings = await TrainingModel.find({});
-        return trainings.map(training => new Training(training.id, training.name, training.velocity, training.unit));
+    async findByUserId(userId) {
+        const trainings = await TrainingModel.find({ userId });
+        return trainings.map(training => new Training(training.id, training.name, training.velocity, training.unit, userId));
     }
 
     async findById(trainingId) {
@@ -30,7 +31,8 @@ class TrainingDataSource {
             training.id,
             training.name,
             training.velocity,
-            training.unit
+            training.unit,
+            training.userId
         );
     }
 }

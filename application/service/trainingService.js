@@ -1,8 +1,8 @@
 const dataSource = require('../../infrastructure/trainingDataSource');
 
 class TrainingService {
-    async getAll() {
-        return await dataSource.getAll();
+    async findByUserId(userId) {
+        return await dataSource.findByUserId(userId);
     }
 
     save(training) {

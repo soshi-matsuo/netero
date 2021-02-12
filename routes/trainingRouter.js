@@ -7,7 +7,7 @@ const date = require('../date');
 const logger = require('../logger');
 
 router.post('/', (req, res) => {
-    trainingRegistrationUsecase.save(req.body);
+    trainingRegistrationUsecase.save(req.body, req.user.id);
     res.redirect('/index');
 });
 
