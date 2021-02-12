@@ -3,8 +3,9 @@ const trainingService = require("../service/trainingService");
 const achievementService = require("../service/achievementService");
 
 class IndexPageUsecase {
-    createIndexData() {
-        return Promise.all([this.getAllTrainings(), this.findTodayAchievements()]);
+    createIndexData(userId) {
+        console.log(userId);
+        return Promise.all([this.getAllTrainingsForUser(userId), this.findTodayAchievements()]);
     }
 
     async findTodayAchievements() {
@@ -14,8 +15,8 @@ class IndexPageUsecase {
         return await achievementService.find(option);
     }
 
-    async getAllTrainings() {
-        return await trainingService.getAll();
+    async getAllTrainingsForUser(userId) {
+        return await trainingService.findByUserId(userId);
     }
 }
 

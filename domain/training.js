@@ -3,12 +3,14 @@ class Training {
     #name;
     #velocity;
     #unit;
+    #userId;
 
-    constructor(id, name, velocity, unit) {
+    constructor(id, name, velocity, unit, userId) {
         this.#id = id;
         this.#name = name;
         this.#velocity = velocity;
         this.#unit = unit;
+        this.#userId = userId;
     }
 
     id() {
@@ -25,6 +27,10 @@ class Training {
 
     unit() {
         return this.#unit;
+    }
+
+    userId() {
+        return this.#userId;
     }
 }
 
