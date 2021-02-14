@@ -45,7 +45,7 @@ function ensureAuthenticated(req, res, next) {
     return next();
   }
   console.log('before redirect to auth/login', req.path)
-  res.redirect("/auth/login");
+  res.redirect(303, "/auth/login");
 }
 
 app.use(express.urlencoded({ extended: true }));

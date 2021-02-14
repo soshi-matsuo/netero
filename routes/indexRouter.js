@@ -14,7 +14,7 @@ const toRenderableData = (indexData) => {
 router.get('/', async (req, res) => {
     logger.info('request GET to /');
     const indexData = await indexPageUsecase.createIndexData(req.user.id);
-    res.render('index', toRenderableData(indexData));
+    res.json(toRenderableData(indexData));
 });
 
 module.exports = router;

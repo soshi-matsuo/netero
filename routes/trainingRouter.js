@@ -8,7 +8,7 @@ const logger = require('../logger');
 
 router.post('/', (req, res) => {
     trainingRegistrationUsecase.save(req.body, req.user.id);
-    res.redirect('/index');
+    res.redirect(303, '/index');
 });
 
 const generateNextYear = (year, month) => {
@@ -41,7 +41,7 @@ router.get('/:trainingId', async (req, res) => {
     detailData.next = generateNextYear(year, month);
     detailData.previous = generatePreviousYear(year, month);
     logger.info('/training/:trainingId returns: %j', detailData);
-    res.render('detail', detailData);
+    res.json(detailData);
 });
 
 module.exports = router;
