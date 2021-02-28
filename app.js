@@ -3,6 +3,7 @@ const session = require("express-session");
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 const path = require("path");
+const cors = require('cors');
 const express = require("express");
 const app = express();
 
@@ -48,6 +49,7 @@ function ensureAuthenticated(req, res, next) {
   res.redirect(303, "/auth/login");
 }
 
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
@@ -57,9 +59,12 @@ const trainingRouter = require("./routes/trainingRouter");
 const achievementRouter = require("./routes/achievementRouter");
 const authRouter = require("./routes/authRouter");
 
-app.use("/index", ensureAuthenticated, indexRouter);
-app.use("/training", ensureAuthenticated, trainingRouter);
-app.use("/achievement", ensureAuthenticated, achievementRouter);
+// app.use("/index", ensureAuthenticated, indexRouter);
+// app.use("/training", ensureAuthenticated, trainingRouter);
+// app.use("/achievement", ensureAuthenticated, achievementRouter);
+app.use("/index", indexRouter);
+app.use("/training", trainingRouter);
+app.use("/achievement", achievementRouter);
 app.use("/auth", authRouter);
 
 app.listen(PORT, () => {
