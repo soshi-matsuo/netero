@@ -35,6 +35,11 @@ class TrainingDataSource {
             training.userId
         );
     }
+
+    async getAll() {
+        const trainings = await TrainingModel.find({});
+        return trainings.map(training => new Training(training.id, training.name, training.velocity, training.unit));
+    }
 }
 
 module.exports = new TrainingDataSource();

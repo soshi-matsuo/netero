@@ -12,6 +12,10 @@ class TrainingService {
     async findById(trainingId) {
         return await dataSource.findById(trainingId);
     }
+
+    async getAll() {
+        return await dataSource.getAll();
+    }
 }
 
 module.exports = new TrainingService();
