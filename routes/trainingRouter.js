@@ -7,8 +7,9 @@ const date = require('../date');
 const logger = require('../logger');
 
 router.post('/', (req, res) => {
-    trainingRegistrationUsecase.save(req.body, req.user.id);
-    res.redirect(303, '/index');
+    // TODO replace 'tmp' with the actual req.user.id (or anything you may choose)
+    trainingRegistrationUsecase.save(req.body, 'tmp');
+    res.status(200).end();
 });
 
 const generateNextYear = (year, month) => {
