@@ -14,9 +14,8 @@ const toRenderableData = (indexData) => {
             unit: tr.unit()
         };
     });
-    const achievedSet = new Set();
-    achievements.forEach(achievement => achievedSet.add(achievement.trainingId()));
-    return {trainings: renderableTrainings, achievedSet};
+    const achievedIds = achievements.map(achievement => achievement.trainingId());
+    return {trainings: renderableTrainings, achievedIds};
 }
 
 router.get('/', async (req, res) => {

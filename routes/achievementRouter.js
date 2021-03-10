@@ -8,7 +8,7 @@ router.post('/:id', async (req, res) => {
     if (!isSaved) {
         res.status(400).send('You can Achieve only once a day');
     } else {
-        res.redirect('/index');
+        res.sendStatus(200);
     }
 });
 
