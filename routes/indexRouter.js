@@ -20,7 +20,7 @@ const toRenderableData = (indexData) => {
 
 router.get('/', async (req, res) => {
     logger.info('request GET to /');
-    const indexData = await indexPageUsecase.createIndexData('');
+    const indexData = await indexPageUsecase.createIndexData(req.user.sub);
     res.json(toRenderableData(indexData));
 });
 

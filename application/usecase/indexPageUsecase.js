@@ -5,8 +5,8 @@ const achievementService = require("../service/achievementService");
 class IndexPageUsecase {
     createIndexData(userId) {
         console.log(userId);
-        // return Promise.all([this.getAllTrainingsForUser(userId), this.findTodayAchievements()]);
-        return Promise.all([this.getAllTrainings(), this.findTodayAchievements()]);
+        return Promise.all([this.getAllTrainingsForUser(userId), this.findTodayAchievements()]);
+        // return Promise.all([this.getAllTrainings(), this.findTodayAchievements()]);
     }
 
     async findTodayAchievements() {

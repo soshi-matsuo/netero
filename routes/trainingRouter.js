@@ -7,8 +7,7 @@ const date = require('../date');
 const logger = require('../logger');
 
 router.post('/', (req, res) => {
-    // TODO replace 'tmp' with the actual req.user.id (or anything you may choose)
-    trainingRegistrationUsecase.save(req.body, 'tmp');
+    trainingRegistrationUsecase.save(req.body, req.user.sub);
     res.sendStatus(200);
 });
 
