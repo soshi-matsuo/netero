@@ -24,8 +24,10 @@ const validateJwt = jwt({
 
 app.use(cors());
 app.use(express.json());
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "pug");
+app.use((req, _, next) => {
+  logger.info(`${req.method} request to ${req.url}`);
+  next();
+});
 
 const indexRouter = require("./routes/indexRouter");
 const trainingRouter = require("./routes/trainingRouter");

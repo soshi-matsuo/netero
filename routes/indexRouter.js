@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const logger = require('../logger');
 const indexPageUsecase = require('../application/usecase/indexPageUsecase');
 
 const toRenderableData = (indexData) => {
@@ -19,7 +18,6 @@ const toRenderableData = (indexData) => {
 }
 
 router.get('/', async (req, res) => {
-    logger.info('request GET to /');
     const indexData = await indexPageUsecase.createIndexData(req.user.sub);
     res.json(toRenderableData(indexData));
 });
