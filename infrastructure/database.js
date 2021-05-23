@@ -2,10 +2,7 @@ const mongoose = require('mongoose');
 
 const logger = require('../logger');
 
-const SERVER = '127.0.0.1:27017';
-const DB_NAME = 'netero';
-
-mongoose.connect(`mongodb://${SERVER}/${DB_NAME}`, 
+mongoose.connect(process.env.MONGO_URL, 
     { 
         useUnifiedTopology: true,
         useNewUrlParser: true

@@ -22,7 +22,7 @@ const validateJwt = jwt({
   algorithms: ['RS256']
 });
 
-app.use(cors());
+app.use(cors({ origin: process.env.REACT_APP_URL }));
 app.use(express.json());
 app.use((req, _, next) => {
   logger.info(`${req.method} request to ${req.url}`);
